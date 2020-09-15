@@ -1,14 +1,12 @@
 package com.thoughtwork.gtb.basicquiz.service;
 
 import com.thoughtwork.gtb.basicquiz.domain.Education;
-import com.thoughtwork.gtb.basicquiz.domain.User;
 import com.thoughtwork.gtb.basicquiz.exception.UserNotFoundException;
 import com.thoughtwork.gtb.basicquiz.repository.EducationRespository;
 import com.thoughtwork.gtb.basicquiz.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class EducationService {

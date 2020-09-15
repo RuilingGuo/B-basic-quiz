@@ -3,9 +3,9 @@ package com.thoughtwork.gtb.basicquiz.controller;
 import com.thoughtwork.gtb.basicquiz.domain.Education;
 import com.thoughtwork.gtb.basicquiz.service.EducationService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -25,7 +25,7 @@ public class EducationController {
 
     @PostMapping("/{userId}/educations")
     @ResponseStatus(HttpStatus.CREATED)
-    public Education createEducation(@PathVariable Integer userId, @RequestBody Education education) {
+    public Education createEducation(@PathVariable Integer userId, @RequestBody @Valid Education education) {
         return educationService.createEducation(userId, education);
     }
 }

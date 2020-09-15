@@ -4,8 +4,6 @@ import com.thoughtwork.gtb.basicquiz.domain.User;
 import com.thoughtwork.gtb.basicquiz.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
-
 @Service
 public class UserService {
 
