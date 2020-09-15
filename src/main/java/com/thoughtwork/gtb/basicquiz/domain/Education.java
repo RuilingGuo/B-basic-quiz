@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
 @AllArgsConstructor
@@ -14,9 +16,10 @@ import javax.validation.constraints.Size;
 public class Education {
     private Integer id;
     private Integer userId;
+    @Min(value = 1900)
     private Integer year;
-
-    @Size
+    @Size(min = 1,max = 256)
     private String title;
+    @Size(min = 1,max = 4096)
     private String description;
 }
