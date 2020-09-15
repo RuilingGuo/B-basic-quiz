@@ -44,4 +44,8 @@ public class UserRepository {
                         "voluptatem dolorum! Quasi.")
                 .build());
     }
+
+    public boolean isUserExistedByUserId(Integer userId) {
+        return userList.containsKey(userId);
+    }
 }
