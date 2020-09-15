@@ -18,12 +18,12 @@ public class EducationController {
         this.educationService = educationService;
     }
 
-    @GetMapping("/{id}/educations")
+    @GetMapping("/{userId}/educations")
     public List<Education> findByUserId(@PathVariable Integer userId) {
         return educationService.findEducationByUserId(userId);
     }
 
-    @PostMapping("/{id}/educations")
+    @PostMapping("/{userId}/educations")
     @ResponseStatus(HttpStatus.CREATED)
     public Education createEducation(@PathVariable Integer userId, @RequestBody Education education) {
         return educationService.createEducation(userId, education);
