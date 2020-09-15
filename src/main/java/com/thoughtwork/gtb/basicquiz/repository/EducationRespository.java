@@ -15,7 +15,7 @@ public class EducationRespository {
 
     private UserRepository userRepository;
 
-    public EducationRespository() {
+    public EducationRespository(UserRepository userRepository) {
         this.educationList = new HashMap<>();
         this.userRepository = userRepository;
 
