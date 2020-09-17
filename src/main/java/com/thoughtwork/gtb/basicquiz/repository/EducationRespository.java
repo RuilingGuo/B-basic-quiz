@@ -7,12 +7,16 @@ import org.springframework.stereotype.Repository;
 import java.util.*;
 import java.util.stream.Collectors;
 
+// GTB: - 拼写错误：Respository，IDEA 都提醒了，怎么还是不改？
 @Repository
 public class EducationRespository {
 
+    // GTB: - 通常在声明处直接初始化
     private Map<Integer,Education> educationList ;
+    // GTB: - EDUCATION_INC_NUM 不是常量，最好别全大写
     private static Integer EDUCATION_INC_NUM = 1;
 
+    // GTB: - 通常一个 Repository 不会再依赖另一个 Repository 了，你遇到的问题需要用另外的方式解决，可以跟组里小伙伴讨论交流一下
     private UserRepository userRepository;
 
     public EducationRespository(UserRepository userRepository) {
@@ -29,6 +33,7 @@ public class EducationRespository {
     }
 
     public List<Education> findEducationsByUserId(Integer userId){
+        // GTB: 有这个判断很好，但这也让当前 repo 依赖了 UserRepository，前面我也写了，看看怎们去掉这个依赖
         if(!userRepository.isUserExistedByUserId(userId)){
             throw new UserNotFoundException("user not existed");
         }
