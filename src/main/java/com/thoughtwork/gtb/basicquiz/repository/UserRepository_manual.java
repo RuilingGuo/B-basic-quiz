@@ -7,11 +7,11 @@ import org.springframework.stereotype.Repository;
 import java.util.*;
 
 @Repository
-public class UserRepository {
+public class UserRepository_manual {
     private Map<Integer, User> userList;
     private static Integer USER_INC_NUM = 1;
 
-    public UserRepository() {
+    public UserRepository_manual() {
         this.userList = new HashMap<>();
         this.initUserList();
     }

@@ -8,17 +8,17 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Repository
-public class EducationRespository {
+public class EducationRespository_manual {
 
     private Map<Integer,Education> educationList ;
     private static Integer EDUCATION_INC_NUM = 1;
 
-    private UserRepository userRepository;
+    private UserRepository_manual userRepositoryManual;
 
-    public EducationRespository(UserRepository userRepository) {
+    public EducationRespository_manual(UserRepository_manual userRepositoryManual) {
         this.educationList = new HashMap<>();
         this.initEducationList();
-        this.userRepository = userRepository;
+        this.userRepositoryManual = userRepositoryManual;
 
     }
 
@@ -29,7 +29,7 @@ public class EducationRespository {
     }
 
     public List<Education> findEducationsByUserId(Integer userId){
-        if(!userRepository.isUserExistedByUserId(userId)){
+        if(!userRepositoryManual.isUserExistedByUserId(userId)){
             throw new UserNotFoundException("user not existed");
         }
         return educationList.values().stream()
