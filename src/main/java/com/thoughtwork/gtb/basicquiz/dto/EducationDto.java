@@ -27,7 +27,7 @@ public class EducationDto {
     @Size(min = 1,max = 4096)
     String description;
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "user_id")
     UserDto user;
 
 
