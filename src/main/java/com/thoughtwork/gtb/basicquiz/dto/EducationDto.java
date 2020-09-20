@@ -1,5 +1,6 @@
 package com.thoughtwork.gtb.basicquiz.dto;
 
+import com.thoughtwork.gtb.basicquiz.domain.Education;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,4 +29,14 @@ public class EducationDto {
     @ManyToOne
     @JoinColumn(name = "id")
     UserDto user;
+
+
+    public static EducationDto bind(Education education, UserDto userDto) {
+        return EducationDto.builder()
+                .year(education.getYear())
+                .title(education.getTitle())
+                .description(education.getDescription())
+                .user(userDto)
+                .build();
+    }
 }

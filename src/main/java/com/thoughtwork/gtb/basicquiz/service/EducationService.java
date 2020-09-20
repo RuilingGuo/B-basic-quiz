@@ -1,32 +1,30 @@
 package com.thoughtwork.gtb.basicquiz.service;
 
 import com.thoughtwork.gtb.basicquiz.domain.Education;
-import com.thoughtwork.gtb.basicquiz.exception.UserNotFoundException;
-import com.thoughtwork.gtb.basicquiz.repository.EducationRespository_manual;
-import com.thoughtwork.gtb.basicquiz.repository.UserRepository_manual;
+import com.thoughtwork.gtb.basicquiz.dto.EducationDto;
+import com.thoughtwork.gtb.basicquiz.dto.UserDto;
+import com.thoughtwork.gtb.basicquiz.repository.EducationRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class EducationService {
-    private EducationRespository_manual educationRespositoryManual;
-    private UserRepository_manual userRepositoryManual;
 
-    public EducationService(EducationRespository_manual educationRespositoryManual, UserRepository_manual userRepositoryManual) {
-        this.educationRespositoryManual = educationRespositoryManual;
-        this.userRepositoryManual = userRepositoryManual;
+    private EducationRepository educationRepository;
+    private UserService userService;
+
+    public EducationService(EducationRepository educationRepository, UserService userService) {
+        this.educationRepository = educationRepository;
+        this.userService = userService;
     }
 
-    public List<Education> findEducationByUserId(Integer userId) {
-        return educationRespositoryManual.findEducationsByUserId(userId);
+    public List<EducationDto> findEducationByUserId(Long userId) {
+        return educationRepository.findEducationByUserId(userId);
     }
 
-    public Education createEducation(Integer userId, Education education) {
-        if (!userRepositoryManual.isUserExistedByUserId(userId)) {
-            throw new UserNotFoundException("user not existed");
-        }
-        education.setUserId(userId);
-        return educationRespositoryManual.createEducation(education);
+    public EducationDto createEducation(Long userId, Education education) {
+        UserDto userDto = userService.findUserById(userId);
+        return educationRepository.save(EducationDto.bind(education,userDto));
     }
 }

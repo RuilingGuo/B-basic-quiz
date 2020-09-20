@@ -17,7 +17,7 @@ public class Education {
     private Integer id;
     private Integer userId;
     @Min(value = 1900)
-    private Integer year;
+    private Long year;
     @Size(min = 1,max = 256)
     private String title;
     @Size(min = 1,max = 4096)

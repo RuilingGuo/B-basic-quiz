@@ -1,5 +1,6 @@
 package com.thoughtwork.gtb.basicquiz.dto;
 
+import com.thoughtwork.gtb.basicquiz.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,4 +30,13 @@ public class UserDto {
     String avatar;
     @Size(min = 0,max = 1024)
     String description;
+
+    public static UserDto bind(User user) {
+        return UserDto.builder()
+                .name(user.getName())
+                .age(user.getAge())
+                .avatar(user.getAvatar())
+                .description(user.getDescription())
+                .build();
+    }
 }

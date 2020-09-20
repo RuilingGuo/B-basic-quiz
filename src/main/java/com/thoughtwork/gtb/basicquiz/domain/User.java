@@ -15,12 +15,11 @@ import javax.validation.constraints.Size;
 @Data
 @Builder
 public class User {
-    private Integer id;
     @NotBlank
     @Size(min = 1,max = 128)
     private String name;
     @Range(min = 16)
-    private Integer age;
+    private Long age;
     @Size(min = 8,max = 512)
     private String avatar;
     @Size(min = 0,max = 1024)
