@@ -25,7 +25,7 @@ public class ControllerExceptionHandler {
     public ResponseEntity<ErrorMessage> handleUserNotFound(RuntimeException ex) {
         log.warn("invalid request", ex);
         return ResponseEntity.status(HttpStatus.NOT_FOUND.value())
-                .body(new ErrorMessage(ex.getMessage(), HttpStatus.BAD_REQUEST.value()));
+                .body(new ErrorMessage(ex.getMessage(), HttpStatus.NOT_FOUND.value()));
     }
 
     @ExceptionHandler({MethodArgumentNotValidException.class})
